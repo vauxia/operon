@@ -1,0 +1,43 @@
+Operon\CoreBundle\Entity\Fact:
+  type: entity
+  table: fact
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    timestamp:
+      type: datetime
+      nullable: false
+  manyToOne:
+    rule:
+      targetEntity: Rule
+      cascade: {  }
+      mappedBy: Fact
+      inversedBy: null
+      joinColumns:
+        rule_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    link:
+      targetEntity: Link
+      cascade: {  }
+      mappedBy: Fact
+      inversedBy: null
+      joinColumns:
+        link_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    item:
+      targetEntity: Item
+      cascade: {  }
+      mappedBy: Fact
+      inversedBy: null
+      joinColumns:
+        from_item_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

@@ -1,0 +1,40 @@
+Operon\CoreBundle\Entity\Item:
+  type: entity
+  table: item
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    name:
+      type: string
+      length: 200
+      fixed: false
+      nullable: false
+    itemTable:
+      type: string
+      length: 200
+      fixed: false
+      nullable: false
+      column: item_table
+  manyToMany:
+    role:
+      targetEntity: Role
+      cascade: {  }
+      mappedBy: null
+      inversedBy: item
+      joinTable:
+        name: item_role
+        joinColumns:
+          -
+            name: item_id
+            referencedColumnName: id
+        inverseJoinColumns:
+          -
+            name: role_id
+            referencedColumnName: id
+      orderBy: null
+  lifecycleCallbacks: {  }

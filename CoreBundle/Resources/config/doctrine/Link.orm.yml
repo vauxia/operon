@@ -1,0 +1,48 @@
+Operon\CoreBundle\Entity\Link:
+  constraints:
+    - Callback:
+      methods: [validateRule]
+  type: entity
+  table: link
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    linkStart:
+      type: datetime
+      nullable: false
+      column: link_start
+    linkEnd:
+      type: datetime
+      nullable: false
+      column: link_end
+  manyToOne:
+    rule:
+      targetEntity: Rule
+      cascade: {  }
+      mappedBy: Link
+      joinColumns:
+        rule_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    from:
+      targetEntity: Item
+      cascade: {  }
+      mappedBy: Link
+      joinColumns:
+        from_item_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    to:
+      targetEntity: Item
+      cascade: {  }
+      mappedBy: Link
+      joinColumns:
+        to_item_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

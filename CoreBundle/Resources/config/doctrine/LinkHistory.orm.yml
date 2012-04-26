@@ -1,0 +1,45 @@
+Operon\CoreBundle\Entity\LinkHistory:
+  type: entity
+  table: link_history
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    linkStart:
+      type: datetime
+      nullable: false
+      column: link_start
+    linkEnd:
+      type: datetime
+      nullable: false
+      column: link_end
+  manyToOne:
+    rule:
+      targetEntity: Rule
+      cascade: {  }
+      mappedBy: LinkHistory
+      joinColumns:
+        rule_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    from:
+      targetEntity: Item
+      cascade: {  }
+      mappedBy: LinkHistory
+      joinColumns:
+        from_item_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    to:
+      targetEntity: Item
+      cascade: {  }
+      mappedBy: LinkHistory
+      joinColumns:
+        to_item_id:
+          referencedColumnName: id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

@@ -1,0 +1,66 @@
+Operon\CoreBundle\Entity\Rule:
+  type: entity
+  table: rule
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: IDENTITY
+    name:
+      type: string
+      length: 200
+    active:
+      type: boolean
+      default: true
+    permanent:
+      type: boolean
+      default: false
+    symmetrical:
+      type: boolean
+      default: false
+    minimumFromCount:
+      type: integer
+      nullable: true
+      column: from_count_min
+    maximumFromCount:
+      type: integer
+      nullable: true
+      column: from_count_max
+    minimumToCount:
+      type: integer
+      nullable: true
+      column: to_count_min
+    maximumToCount:
+      type: integer
+      nullable: true
+      column: to_count_max
+  manyToOne:
+    owner:
+      targetEntity: Item
+      cascade: {  }
+      mappedBy: Rule
+      joinColumns:
+        owner_item_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    fromRole:
+      targetEntity: Role
+      cascade: {  }
+      mappedBy: Rule
+      joinColumns:
+        from_role_id:
+          referencedColumnName: id
+      orphanRemoval: false
+    toRole:
+      targetEntity: Role
+      cascade: {  }
+      mappedBy: Rule
+      joinColumns:
+        to_role_id:
+          referencedColumnName: id
+      orphanRemoval: false
+
+  lifecycleCallbacks: {  }

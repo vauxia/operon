@@ -1,0 +1,7 @@
+parameters:
+#    operon_core.example.class: Operon\CoreBundle\Example
+
+services:
+#    operon_core.example:
+#        class: %operon_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
